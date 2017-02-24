@@ -48,15 +48,15 @@
         <div class='form-group'>
           <div class='kotak-gambar'>
             <img src='' style="display:none" id='ktm_image'/>
-            <span>Upload KTM</span>
+            <span>K T M</span>
           </div>
           <input name='ktm' type='file' style='display:none;' id='upload_ktm' accept="image/*"/>
-          <label class='btn btn-info' style='width:100%;' for='upload_ktm'><i class='material-icons'>file_upload</i> Upload File</label>
+          <label class='btn btn-info' style='width:100%;' for='upload_ktm'><i class='material-icons'>file_upload</i> Upload KTM</label>
         </div>
       </div>
 
       <div class='form-group'>
-        <button type='submit' class='btn btn-primary' style='width:100%;font-weight:bold;'><i class='material-icons'>send</i> Submit</button>
+        <button type='submit' class='btn btn-primary' style='width:100%;font-weight:bold;font-size:16px;'><i class='material-icons'>send</i> Submit</button>
       </div>
 
     </form>
