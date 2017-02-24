@@ -71,7 +71,25 @@ img{
     border-radius: 4px;
     border: 1px solid #e6e6e6;
 }
-img#ktm_image {
+#ktm_image {
     width: 100%;
     height: 100%;
+}
+.loading {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background: rgba(0, 0, 0, 0.64);
+    z-index: 9;
+    text-align: center;
+    font-size: 50px;
+    display: table;
+    color: #fff;
+    display: none;
+}
+.loading span {
+    display: table-cell;
+    vertical-align: middle;
 }

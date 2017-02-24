@@ -38,6 +38,11 @@
 	</div>
 </div>
 
+<div class='loading'>
+	<span>
+		<i class='fa fa-spin fa-cog'></i> Loading&hellip;
+	</span>
+</div>
 
 </body>
 
