@@ -100,9 +100,6 @@
             $mahasiswa['email']       = $email;
             $mahasiswa['ktm']         = $this->upload->data()['file_name'];
             $mahasiswa['expired']     = date("Y-m-d", strtotime(date("Y-m-d")) + (3600*24*365));
-            // $mahasiswa['konfirmasi']  = 0;
-            //
-            // print_r($mahasiswa);
 
             $this->model_mahasiswa->daftar($mahasiswa);
 

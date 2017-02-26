@@ -41,12 +41,18 @@ $("#form-pendaftaran form").submit(function(e){
         // console.log(response);
         if(response.status){
           swal("Sukses!","Kamu berhasil mendaftar DreamSpark UP2TI FSM UNDIP");
+          $("#form-pendaftaran form")[0].reset();
         }else{
           var errMessage = "";
           $.each(response.message, function(index, element){
             errMessage += "<p>"+element+"</p>";
           });
-          swal("Oops!",errMessage,"error");
+          swal({
+            title: "Oops!",
+            text: errMessage+" <p><small>Silahkan hubungi pihak UP2TI atau hubungi melalui email <a href='mailto:m.novalbs@gmail.com'>disini</a></small></p>",
+            html: true,
+            type: "error",
+          });
         }
       },
       complete: function(){
