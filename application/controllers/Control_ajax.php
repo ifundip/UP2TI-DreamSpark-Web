@@ -25,10 +25,11 @@
 
     public function register_dreamspark()
     {
+      $this->load->model('model_mahasiswa');
       $out['status']  = false;
       $out['message'] = array();
 
-      $this->form_validation->set_rules('nim','NIM','required');
+      $this->form_validation->set_rules('nim','NIM','required|callback_availability_check');
       $this->form_validation->set_rules('nama',"Nama",'required');
       $this->form_validation->set_rules('email','Email','required|valid_email');
 
@@ -91,8 +92,19 @@
             $logs  .= "NIM     : ".$nim."\n";
             $logs  .= "Nama    : ".$nama."\n";
             $logs  .= "Email   : ".$email."\n\n";
-            
-            var_dump(write_file(FCPATH.'application/logs/logs_pendaftaran.txt', $logs, 'a+'));
+
+            write_file(FCPATH.'application/logs/logs_pendaftaran.txt', $logs, 'a+');
+
+            $mahasiswa['nim']         = $nim;
+            $mahasiswa['nama']        = $nama;
+            $mahasiswa['email']       = $email;
+            $mahasiswa['ktm']         = $this->upload->data()['file_name'];
+            $mahasiswa['expired']     = date("Y-m-d", strtotime(date("Y-m-d")) + (3600*24*365));
+            // $mahasiswa['konfirmasi']  = 0;
+            //
+            // print_r($mahasiswa);
+
+            $this->model_mahasiswa->daftar($mahasiswa);
 
             $out['status']  = true;
           }
@@ -101,10 +113,20 @@
           $out['message'] = 'Jurusan harus berasal dari FSM UNDIP';
         }
 
-
       }
 
       echo json_encode($out);
+    }
+
+    public function availability_check($nim)
+    {
+      $this->load->model('model_mahasiswa');
+      if( $this->model_mahasiswa->availability_check($nim) != false ){
+        return true;
+      }else{
+        $this->form_validation->set_message('availability_check', "NIM anda sudah terdaftar di UP2TI");
+        return false;
+      }
     }
 
   }

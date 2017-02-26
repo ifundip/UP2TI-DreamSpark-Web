@@ -27,6 +27,8 @@ $("#form-pendaftaran form").submit(function(e){
     form_data.append('nama', $('input[name="nama"]').val() );
     form_data.append('email', $('input[name="email"]').val() );
 
+    $("button[type='submit']").prop('disabled',true).html("<i class='fa fa-spin fa-cog'></i> Loading&hellip;");
+
     $.ajax({
       url: 'ajax/register_dreamspark',
       cache: false,
@@ -34,10 +36,25 @@ $("#form-pendaftaran form").submit(function(e){
       processData: false,
       data: form_data,
       type: 'POST',
+      dataType: 'json',
       success: function(response){
-        console.log(response);
+        // console.log(response);
+        if(response.status){
+          swal("Sukses!","Kamu berhasil mendaftar DreamSpark UP2TI FSM UNDIP");
+        }else{
+          var errMessage = "";
+          $.each(response.message, function(index, element){
+            errMessage += "<p>"+element+"</p>";
+          });
+          swal("Oops!",errMessage,"error");
+        }
+      },
+      complete: function(){
+        $("button[type='submit']").prop('disabled',false).html("Submit");
       }
     });
+  }else{
+    swal("Oops!","Gagal, KTM wajib diupload","error");
   }
 });
 
@@ -46,7 +63,7 @@ $("input[name='nim']").focusout(function(){
   var input_nama  = $("input[name='nama']");
   var nama        = input_nama.val();
   if(!nama){
-    $(".loading").show();
+    $(".loading").css('display','table');
     input_nama.prop('disabled',true);
     $.ajax({
       url: 'ajax/get_detail_mahasiswa',

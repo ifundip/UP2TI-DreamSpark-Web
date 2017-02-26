@@ -16,9 +16,10 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
 
 	<!-- CSS Files -->
-    <link href="<?php echo base_url('assets/web'); ?>/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="<?php echo base_url('assets/web'); ?>/css/material-kit.css" rel="stylesheet"/>
-    <link href='<?php echo base_url('assets/web/css/style.css?ver='.date("YmdHis")); ?>' rel='stylesheet'/>
+  <link href="<?php echo base_url('assets/web'); ?>/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="<?php echo base_url('assets/web'); ?>/css/material-kit.css" rel="stylesheet"/>
+	<link href='<?php echo base_url('assets/web/css/sweetalert.css'); ?>' rel='stylesheet'/>
+  <link href='<?php echo base_url('assets/web/css/style.css?ver='.date("YmdHis")); ?>' rel='stylesheet'/>
 </head>
 
 <body>
@@ -59,6 +60,9 @@
 
 	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 	<script src="<?php echo base_url('assets/web'); ?>/js/material-kit.js" type="text/javascript"></script>
+
+	<!-- SweetAlert -->
+	<script src='<?php echo base_url('assets/web/js/sweetalert.min.js'); ?>'></script>
 
   <!-- UP2TI Custom Script -->
   <script src='<?php echo base_url('assets/web/js/script.js?ver='.date("YmdHis")); ?>'></script>

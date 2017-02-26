@@ -16,4 +16,19 @@
       }
     }
 
+    public function availability_check($nim)
+    {
+      $this->db->select('*');
+      $this->db->from('tbl_mahasiswa_daftar');
+      $this->db->where('nim',$nim);
+      $query = $this->db->get();
+
+      return $query->num_rows()!=0 ? false : true;
+    }
+
+    public function daftar($arr)
+    {
+      $this->db->insert('tbl_mahasiswa_daftar', $arr);
+    }
+
   }
