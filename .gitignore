@@ -1,1 +1,3 @@
 assets/ktm/*
+application/config/config.php
+application/config/database.php
