@@ -126,4 +126,27 @@
       }
     }
 
+    public function admin_login()
+    {
+      $out['status']  = false;
+      $out['message'] = 'Silahkan cek kembali username dan password';
+
+      $this->form_validation->set_rules('username','Username','required');
+      $this->form_validation->set_rules('password','Password','required');
+
+      if($this->form_validation->run()!=false){
+        $this->load->library('admin');
+
+        $username   = $this->input->post('username');
+        $password   = $this->input->post('password');
+        $login      = $this->admin->login($username, $password);
+
+        $out['status']  = $login;
+      }else{
+        $out['message'] = validation_errors();
+      }
+
+      echo json_encode($out);
+    }
+
   }

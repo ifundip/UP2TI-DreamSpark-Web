@@ -2,7 +2,7 @@
   <div id='form-pendaftaran'>
 
     <div class='head-title'>
-      <img src='<?php echo base_url('assets/web/img/dreamspark.png'); ?>'/>
+      <img src='<?php echo base_url('assets/web/front/img/dreamspark.png'); ?>'/>
       <h3>DreamSpark</h3>
       <h4>UP2TI FSM UNDIP</h4>
     </div>

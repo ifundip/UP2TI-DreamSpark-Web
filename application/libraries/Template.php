@@ -13,4 +13,9 @@
       $ci->parser->parse($this->folder.'/template', $subdata);
     }
 
+    public function set_folder($str)
+    {
+      $this->folder = $str;
+    }
+
   }
