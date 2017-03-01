@@ -21,6 +21,7 @@
           $cookie_value['email']      = $login['email'];
           $cookie_value['fullname']   = $login['fullname'];
           $cookie_value['privilege']  = $login['privilege'];
+          $cookie_value['nimJurusan'] = $login['nimJurusan'];
 
           $cookie_value   = json_encode($cookie_value);
           $cookie_value   = $this->ci->encryption->encrypt($cookie_value);

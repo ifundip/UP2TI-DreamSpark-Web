@@ -44,36 +44,7 @@
         $nama   = $this->input->post('nama');
         $email  = $this->input->post('email');
 
-        switch( substr($nim,3,3) ){
-          case '103' : {
-            $jurusan  = "informatika";
-            break;
-          }
-          case '201' : {
-            $jurusan  = 'biologi';
-            break;
-          }
-          case '102' : {
-            $jurusan  = 'statistika';
-            break;
-          }
-          case '401' : {
-            $jurusan  = 'fisika';
-            break;
-          }
-          case '301' : {
-            $jurusan  = 'kimia';
-            break;
-          }
-          case '101' : {
-            $jurusan  = 'matematika';
-            break;
-          }
-          default : {
-            $jurusan  = false;
-            break;
-          }
-        }
+        $jurusan  = jurusan_by_nim($nim);
 
         if($jurusan!=false){
           $config['upload_path']      = FCPATH.'assets/ktm/'.$jurusan.'/';
