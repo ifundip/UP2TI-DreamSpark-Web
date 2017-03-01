@@ -13,6 +13,7 @@
     {
       parent::__construct();
       $this->load->library('encryption');
+      $this->load->library('admin');
       $this->load->model('model_admin');
       $this->template->set_folder('admin');
     }
@@ -43,6 +44,24 @@
       $this->nimJurusan = $login->nimJurusan;
 
       !empty($this->privilege) ?: redirect('admin/login');
+    }
+
+    public function pendaftaran_delete($nim='')
+    {
+      $this->is_loggedIn();
+      $this->admin->pendaftaran_delete($nim, $this->nimJurusan);
+      redirect('admin');
+    }
+
+    public function pendaftaran_edit($nim='')
+    {
+      $this->is_loggedIn();
+      $data['pendaftar']  = $this->admin->pendaftaran_detail($nim, $this->nimJurusan);
+      if($data['pendaftar']==false){
+        die(redirect('admin'));
+      }
+
+      $this->template->load('admin/admin_pendaftar_detail', $data);
     }
 
   }

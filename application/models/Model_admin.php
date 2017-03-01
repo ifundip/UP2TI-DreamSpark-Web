@@ -26,4 +26,25 @@
       return $query->result_array();
     }
 
+    public function delete_pendaftar($nim, $nimJurusan = NULL)
+    {
+      $this->db->where('nim',$nim);
+      if($nimJurusan!=NULL){
+        $this->db->like('nim',$nimJurusan);
+      }
+      $this->db->delete('tbl_mahasiswa_daftar');
+    }
+
+    public function detail_pendaftar($nim, $nimJurusan = NULL)
+    {
+      $this->db->select('*');
+      $this->db->from('tbl_mahasiswa_daftar');
+      $this->db->where('nim',$nim);
+      if($nimJurusan!=NULL){
+        $this->db->like('nim', $nimJurusan);
+      }
+      $query = $this->db->get();
+      return $query->num_rows()!=0 ? $query->row_array() : false;
+    }
+
   }

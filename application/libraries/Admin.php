@@ -34,4 +34,14 @@
       return $out;
     }
 
+    public function pendaftaran_delete($nim, $nimJurusan=NULL)
+    {
+      $this->ci->model_admin->delete_pendaftar($nim, $nimJurusan);
+    }
+
+    public function pendaftaran_detail($nim, $nimJurusan=NULL)
+    {
+      return $this->ci->model_admin->detail_pendaftar($nim, $nimJurusan);
+    }
+
   }

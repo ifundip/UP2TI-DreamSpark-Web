@@ -13,6 +13,7 @@
             <th>Email</th>
             <th>KTM</th>
             <th>Status</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -27,6 +28,10 @@
               <td><?php echo safe_echo_html($mhs['email']); ?></td>
               <td><a href='<?php echo base_url('assets/ktm/'.jurusan_by_nim($mhs['nim']).'/'.$mhs['ktm']); ?>' onclick='window.open(this.href,"KTM","left=20,top=20,width=600,height=400,toolbar=1,resizable=0"); return false;'>Lihat KTM</a></td>
               <td><?php echo $mhs['konfirmasi']==1 ? "Confirmed" : "Unconfirmed"; ?></td>
+              <td>
+                <a href='<?php echo base_url('admin/pendaftaran_edit/'.$mhs['nim']); ?>'><i class='fa fa-pencil'></i></a>
+                <a href='<?php echo base_url('admin/pendaftaran_delete/'.$mhs['nim']); ?>' onclick='return confirm("Hapus pendaftaran ini?");'><i class='fa fa-trash'></i></a>
+              </td>
             </tr>
           <?php $no++;} ?>
         </tbody>
